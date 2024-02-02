@@ -1,6 +1,6 @@
 # vuetest
 
-##Vue pratice
+## Vue pratice
 1. Counter
 2. About
 3. Quizes
