@@ -1,6 +1,7 @@
 <!-- App.vue -->
 <script setup>
   import {RouterView} from "vue-router"
+
 </script>
 
 <template>
@@ -8,14 +9,13 @@
     <header>
       <router-link to="/CounterPage"> Counter</router-link>
       <router-link to="/AboutPage"> About</router-link>
-      <router-link to="/QuizesView"> QuizView</router-link>
+      <router-link to="/"> Quizes</router-link>
     </header>
-
-    <main>
-      <router-view></router-view>
-    </main>
   </div>
-  
+
+  <div class="container">
+    <RouterView />
+  </div>
 </template>
 
 
@@ -24,13 +24,5 @@
 header{
   text-align: center;
 }
-
-main {
-  background-color: aliceblue;
-  height: 100vh;
-  width: 100vw;
-  
-}
-
 
 </style>
