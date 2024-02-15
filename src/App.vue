@@ -1,4 +1,3 @@
-<!-- App.vue -->
 <script setup>
   import {RouterView} from "vue-router"
 
@@ -7,8 +6,8 @@
 <template>
   <div>
     <header>
-      <router-link to="/CounterPage"> Counter</router-link>
-      <router-link to="/AboutPage"> About</router-link>
+      <router-link to="/CounterPage"> Counter</router-link>  
+      <router-link to="/AboutPage"> About</router-link>  
       <router-link to="/"> Quizes</router-link>
     </header>
   </div>
@@ -24,5 +23,4 @@
 header{
   text-align: center;
 }
-
 </style>

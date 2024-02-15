@@ -1,4 +1,3 @@
-<!-- QuizesView.vue -->
 <script setup>
     import q from "/src/data/quizes.json"
     import {ref, watch} from "vue"
@@ -21,17 +20,11 @@
         <header>
             <h1>Quizes</h1>
             <input v-model.trim="search" type="text" placeholder="Search...">
+            <!-- 綁定search輸入框  .trim去除輸入時的首尾空格-->
         </header>
 
         <div class="options-container">
             <Card v-for="quiz in quizes" :key="quiz.id" :quiz ="quiz"/>
-            <!--<div v-for="quiz in quizes" :key="quiz.id" class="card">
-                <img :src="quiz.img" alt="">
-                <div class="card-text">
-                    <h2>{{ quiz.name }}</h2>
-                    <p>{{ quiz.questions.length }} questions</p>
-                </div>
-            </div>-->
         </div>
     </div>
 </template>
@@ -58,7 +51,7 @@ header input{
 }
 .options-container{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;   /* 在橫向空間不足時能夠自動“換行” */
     margin-top: 40px;
 }
 </style>

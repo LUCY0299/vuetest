@@ -1,13 +1,12 @@
-<!-- CardComponents.vue -->
 <script setup>
     import { defineProps } from 'vue';
-    import {useRouter} from "vue-router"
+    import { useRouter } from "vue-router"
 
     const router = useRouter()
     const props = defineProps(['quiz'])
 
     const navigateToQuiz = () => {
-      router.push(`/quiz/${props.quiz.id}`)
+      router.push(`/quiz/${props.quiz.id}`)   //URL路徑
     }
 </script>
 
@@ -24,7 +23,7 @@
 <style scoped>
 .card{
     width:310px;
-    overflow: hidden;
+    overflow: hidden;   /* 隐藏溢出内容 */
     border-radius: 2%;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
     margin-bottom: 35px;

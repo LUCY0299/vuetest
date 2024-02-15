@@ -6,9 +6,13 @@
     import { ref,computed } from "vue";
     import quizes from "../data/quizes.json"
 
-    const route = useRoute()
-    const quizId = parseInt(route.params.id)
-    const quiz = quizes.find((q => q.id === quizId))
+    const route = useRoute()  
+
+    const quizId = parseInt(route.params.id) //獲取quiz的id參數轉換成整數
+                                             //Card-> router.push(`/quiz/${props.quiz.id}
+    const quiz = quizes.find((q => q.id === quizId))  //q元素 => 對於每個q，若函數為true(q的id與quizId相等)，返回q
+    //根據從URL取得的quiz ID，從包含多個測驗對象的陣列中尋找特定測驗對象      
+        
     const currentQuestionIndex = ref(0)
     const numberOfCorrectAnswers = ref(0)
     const showResults = ref(false)
@@ -21,12 +25,12 @@
     const onOptionSelected = (isCorrect) =>{
         if(isCorrect){
             numberOfCorrectAnswers.value++;
-        }
+        }                                      //10個問題，索引為0-9
         if(quiz.questions.length - 1 === currentQuestionIndex.value){
             showResults.value = true
         }
 
-        currentQuestionIndex.value++
+        currentQuestionIndex.value++   //移動到下個問題
     }
 </script>
 
