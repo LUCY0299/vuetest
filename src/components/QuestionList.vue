@@ -1,15 +1,3 @@
-<script setup>
-    import { defineProps, defineEmits } from 'vue';
-
-
-    const emit = defineEmits(["selectOption" ]);
-    const props = defineProps({ question: Object });
-
-    const emitSelectedOption = (isCorrect) => {
-        emit("selectOption" , isCorrect)
-    }
-</script>  
-
 <template>
     <div class="question-container">
         <h1 class="question">
@@ -31,44 +19,16 @@
     </div>
 </template>
 
-<style scoped>
-    .question-container{
-        margin-top: 20px;
-    }
-    .question{
-        font-size: 37px;
-        margin-bottom: 20px;
-    }
+<script setup>
+    import { defineProps, defineEmits } from 'vue';
 
-    .option {
-        display:flex;
-        margin-bottom: 20px;
-        align-items: center;
-        cursor: pointer;
-        justify-content: flex-start;
-        height: 50px;
-        overflow: hidden;
+
+    const emit = defineEmits(["selectOption" ]);
+    const props = defineProps({ question: Object });
+
+    const emitSelectedOption = (isCorrect) => {
+        emit("selectOption" , isCorrect)
     }
-    .option-label{
-        background-color: bisque;
-        width: 50px;
-        height: 50px;
-        font-size: 30px;
-        display:flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .option-value{
-        background-color: rgb(244,239,239);
-        width: 100%;
-        height: 50px;
-        font-size: 30px;
-        padding: 0 20px;
-        display:flex;
-        align-items: center;
-    }
-    .option-value p {
-        margin: 0; 
-        padding: 0; 
-    }
-</style>
+</script>  
+
+<style scoped> @import "./styles/QuestionList.css"; </style>

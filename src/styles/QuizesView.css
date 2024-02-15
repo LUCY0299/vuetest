@@ -1,0 +1,23 @@
+.quizes-header{
+    margin-bottom: 10px;
+    margin-top: 30px;
+    display:flex;
+    align-items: center;
+}
+
+.quizes-header h1{
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.quizes-header input{
+    border: none;
+    background-color: rgba(128,128,128,0.1);
+    padding: 10px;    /*內邊距 元素邊框（border）與元素內容（content）之間的空間*/
+    border-radius: 5px;
+}
+.quizes-options{
+    display: flex;
+    flex-wrap: wrap;   /* 在橫向空間不足時能夠自動“換行” */
+    margin-top: 40px;
+}
