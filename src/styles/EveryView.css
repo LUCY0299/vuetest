@@ -1,3 +1,28 @@
+/* counter */
+.converter{
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;   /* 垂直方向排列 */
+}
+
+.counter {
+    text-align: center;
+    height: 100vh;  /* vh視窗高度 的100% */
+    display: flex;
+    align-items: center;    /* 垂直居中 */
+    justify-content: center;/* 水平居中 */
+  }
+.counter  button{
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* quizes */
 .quizes-header{
     margin-bottom: 10px;
     margin-top: 30px;
@@ -21,3 +46,4 @@
     flex-wrap: wrap;   /* 在橫向空間不足時能夠自動“換行” */
     margin-top: 40px;
 }
+

@@ -1,12 +1,3 @@
-<script setup>
-    import { defineProps } from 'vue';
-
-    const props = defineProps({ 
-        questionStatus:String,
-        barPercentage:String 
-    });
-</script>
-
 <template>
     <header class="quiz-header">
         <h4>Question {{ props.questionStatus }}</h4>
@@ -17,4 +8,13 @@
     </header>
 </template>
 
-<style scoped> @import "./styles/QuizHeader.css"; </style>
+<style scoped> @import "./styles/EveryComponents.css"; </style>
+
+<script setup>
+    import { defineProps } from 'vue';
+
+    const props = defineProps({ 
+        questionStatus:String,
+        barPercentage:String 
+    });
+</script>

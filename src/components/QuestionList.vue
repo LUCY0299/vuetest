@@ -31,4 +31,4 @@
     }
 </script>  
 
-<style scoped> @import "./styles/QuestionList.css"; </style>
+<style scoped> @import "./styles/EveryComponents.css"; </style>

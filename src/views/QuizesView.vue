@@ -18,4 +18,4 @@ import { quizes,search } from "../js/QuizesView.js";
 import Card from "/src/components/CardComponents.vue"
 </script>
 
-<style scoped> @import "../styles/QuizesView.css"; </style>
+<style scoped> @import "../styles/EveryView.css"; </style>

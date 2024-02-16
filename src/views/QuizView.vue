@@ -3,7 +3,7 @@
         <QuizHeader 
             :questionStatus="questionStatus" 
             :barPercentage="barPercentage"
-        />  <!-- QuizHeader Props -->
+        />  
         <div>
             <QuestionList 
                 v-if="!showResults"
@@ -26,7 +26,8 @@ import QuizHeader from '../components/QuizHeader.vue';
 import ResultScreen from '../components/ResultScreen.vue';
 import { useRoute } from "vue-router"
 const route = useRoute()  
-const quizId = parseInt(route.params.id);
+const quizId = parseInt(route.params.id);  /* router name */
+
 const {
     quiz,
     currentQuestionIndex,

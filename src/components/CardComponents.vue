@@ -20,4 +20,4 @@
     }
 </script>
 
-<style scoped> @import "./styles/CardComponents.css"; </style>
+<style scoped> @import "./styles/EveryComponents.css"; </style>

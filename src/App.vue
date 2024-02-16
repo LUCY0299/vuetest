@@ -8,7 +8,7 @@
     <header>
       <router-link to="/CounterPage"> Counter</router-link>  
       <router-link to="/AboutPage"> About</router-link>  
-      <router-link to="/"> Quizes</router-link>
+      <router-link to="/Quizes"> Quizes</router-link>
     </header>
   </div>
 

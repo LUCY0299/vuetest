@@ -1,20 +1,13 @@
 <template>
-  <div class="counter">
-    <div>
-      <h2>The current count is...</h2>
-      <h1>{{ count }}</h1>
-      <button @click="subtractFromCount"> - </button>
-      <button @click="addToCount"> + </button>
-    </div>
-  </div>
+  <HeaderOne />
+  <CounTer />
+  <FooterOne />
 </template>
 
 <script setup>
-import count,{  addToCount as origAddToCount, subtractFromCount } from '../js/CounterPage.js'
-import { useRouter } from 'vue-router';
-
-const router = useRouter();  
-const addToCount = () => origAddToCount(router);
+import HeaderOne from '../components/HeaderOne.vue';
+import FooterOne from '../components/FooterOne.vue';
+import CounTer from '../components/CounTer.vue';
 </script>
 
-<style scoped> @import "../styles/CounterPage.css"; </style>
+<style scoped> @import "../styles/EveryView.css"; </style>

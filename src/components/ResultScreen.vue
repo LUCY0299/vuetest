@@ -1,10 +1,3 @@
-<script setup>
-    import {defineProps} from "vue"
-    import {RouterLink} from "vue-router"
-
-    const props = defineProps({ quizQuestionlength:Number, numberOfCorrectAnswers:Number });
-</script>
-
 <template>
     <div class="results">
         <p>Your Results...</p>
@@ -13,4 +6,11 @@
     </div>
 </template>
 
-<style scoped> @import "./styles/ResultScreen.css"; </style>
+<style scoped> @import "./styles/EveryComponents.css"; </style>
+
+<script setup>
+    import {defineProps} from "vue"
+    import {RouterLink} from "vue-router"
+
+    const props = defineProps({ quizQuestionlength:Number, numberOfCorrectAnswers:Number });
+</script>
