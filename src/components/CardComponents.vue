@@ -1,5 +1,5 @@
 <template>
-    <div class="card" @click="navigateToQuiz">
+    <div class="card" @click="navigateToQuiz(quiz.id)">
         <img :src="quiz.img" alt="">
         <div class="card-text">
             <h2>{{ props.quiz.name }}</h2>
@@ -10,14 +10,10 @@
 
 <script setup>
     import { defineProps } from 'vue';
-    import { useRouter } from "vue-router"
+    import { useNavigateToQuiz } from '../router/index.js';
 
-    const router = useRouter()
-    const props = defineProps(['quiz'])
-
-    const navigateToQuiz = () => {
-      router.push(`/quiz/${props.quiz.id}`)   //URL路徑
-    }
+    const props = defineProps(['quiz']);
+    const { navigateToQuiz } = useNavigateToQuiz();
 </script>
 
 <style scoped> @import "./styles/EveryComponents.css"; </style>

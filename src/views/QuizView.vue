@@ -20,14 +20,13 @@
 </template>
 
 <script setup>
-import { useQuiz }  from '../js/QuizView.js';
 import QuestionList from '../components/QuestionList.vue';
 import QuizHeader from '../components/QuizHeader.vue';
 import ResultScreen from '../components/ResultScreen.vue';
-import { useRoute } from "vue-router"
-const route = useRoute()  
-const quizId = parseInt(route.params.id);  /* router name */
+import { useQuiz }  from '../router/index.js';
+import { useQuizIdtoRoute } from '../router/index.js';
 
+const { quizId } = useQuizIdtoRoute();  /* router name */
 const {
     quiz,
     currentQuestionIndex,

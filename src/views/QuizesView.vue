@@ -14,8 +14,9 @@
 
 
 <script setup>
-import { quizes,search } from "../js/QuizesView.js";
+import { useQuizes } from '../router/index.js';
 import Card from "/src/components/CardComponents.vue"
+const {quizes,search} =useQuizes();
 </script>
 
 <style scoped> @import "../styles/EveryView.css"; </style>
