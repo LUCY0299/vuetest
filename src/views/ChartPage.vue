@@ -1,10 +1,10 @@
 <template>
-    <div ref="container" style="width: 600px; height: 400px" ></div>>
+    <div ref="container" style="width: 1000px; height: 600px" ></div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import usePie from '../router/echart.js'
+import { usePie } from '../router/echart.js'
 
 const container = ref(null);   //用於訪問 DOM 元素
 

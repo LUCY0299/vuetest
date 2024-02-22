@@ -9,7 +9,9 @@
       <router-link to="/CounterPage"> Counter /</router-link>  
       <router-link to="/AboutPage"> About /</router-link>  
       <router-link to="/Quizes"> Quizes /</router-link>
-      <router-link to="/ChartPage"> Chart</router-link>
+      <router-link to="/ChartPage"> Chart /</router-link>
+      <router-link to="/BarChart"> BarChart /</router-link>
+      <router-link to="/DataTest"> Data</router-link>
     </header>
   </div>
 

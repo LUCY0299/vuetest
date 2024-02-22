@@ -4,11 +4,14 @@ import CounterPage from '../views/CounterPage.vue';
 import AboutPage from '../views/AboutPage.vue';
 import QuizesView from '../views/QuizesView.vue';
 import QuizView from '../views/QuizView.vue';
-import ChartPage from '../views/ChartPage.vue'
-import { ref, computed ,watch} from 'vue';
+import ChartPage from '../views/ChartPage.vue';
+import BarChart from '../views/BarChart.vue';
+import DataTest from '../views/DataTest.vue';
+import { ref, computed ,watch,onMounted} from 'vue';
 import { useRouter ,useRoute } from 'vue-router';
 import q from "/src/data/quizes.json"
 import quizes from "../data/quizes.json"
+import { useBar ,useHotelBar} from '../router/echart.js';
 
 const routes = [
   { path: '/', redirect: '/Quizes'},
@@ -16,7 +19,9 @@ const routes = [
   { path: '/AboutPage', component: AboutPage },
   { path: '/Quizes', component: QuizesView ,name: 'quizes'},
   { path: "/Quiz/:id", component: QuizView ,name: 'quiz',},
-  { path: '/ChartPage' , component:ChartPage ,name :'chart'}
+  { path: '/ChartPage' , component:ChartPage ,name :'chart'},
+  { path: '/BarChart' , component:BarChart ,name :'bar'},
+  { path: '/DataTest' , component:DataTest ,name :'data'}
 ];
 
 const router = createRouter({
@@ -120,3 +125,69 @@ export function useQuizIdtoRoute() {
   const quizId = parseInt(route.params.id); 
   return { quizId };
 }
+
+
+//異步獲取api數據
+export async function fetchData(apiUrl) {
+  try {
+    const response = await fetch(apiUrl);  //await會等這個response對象請求完成後，再執行其他請求
+    const data = await response.json();
+    return data; // 假設 API 響應的格式是 { data: [...] }
+  } catch (error) {
+    console.error("Fetching data failed:", error);
+    throw error; // 重新拋出錯誤
+  }
+}
+
+//DistrictBarChart
+export function useDistrictBarChart(){
+  const barChartContainer = ref(null);
+
+  async function initDistrictChart() {
+    const districtUrl = 'https://api.kcg.gov.tw/api/service/Get/897e552a-2887-4f6f-a6ee-709f7fbe0ee3';
+    const data = await fetchData(districtUrl);
+    if (data && data.data) {
+      const items = data.data;
+      const parkingSpotsByDistrict = items.reduce((accumulator, item) => {
+        const district = item['行政區'];
+        const spots = parseInt(item['可提供小型車停車位'], 10);
+        accumulator[district] = (accumulator[district] || 0) + spots;
+        return accumulator;
+      }, {});
+
+      const categories = Object.keys(parkingSpotsByDistrict);
+      const seriesData = Object.values(parkingSpotsByDistrict);
+
+      if (barChartContainer.value) {
+        const { setOption } = useBar(barChartContainer.value);
+        setOption(categories, seriesData);
+      }
+    }
+  }
+  onMounted(initDistrictChart);
+  return{barChartContainer}
+}
+
+//HotelBarChart
+export function useHotelBarChart(){
+  const barChartTwo = ref(null);
+
+  async function initHotelChart() {
+    const hotelUrl ='https://api.kcg.gov.tw/api/service/Get/8ed53368-e292-4e2a-80a7-434cf497220c';
+    const data = await fetchData(hotelUrl);
+
+    const items = data.data; // 假設數據結構是 {data: [...]}
+
+    const hotelNames = items.map(item => item.旅宿名稱);
+    const roomCounts = items.map(item => parseInt(item.房間數, 10));
+
+    // 使用useBar初始化圖表
+    if (barChartTwo.value) {
+      const { setOption } = useHotelBar(barChartTwo.value);
+      setOption(roomCounts, hotelNames);
+    }
+  }
+  onMounted(initHotelChart)
+  return{barChartTwo }
+}
+
