@@ -127,7 +127,7 @@ export function useQuizIdtoRoute() {
 }
 
 
-//異步獲取api數據
+/* //異步獲取api數據
 export async function fetchData(apiUrl) {
   try {
     const response = await fetch(apiUrl);  //await會等這個response對象請求完成後，再執行其他請求
@@ -137,13 +137,40 @@ export async function fetchData(apiUrl) {
     console.error("Fetching data failed:", error);
     throw error; // 重新拋出錯誤
   }
-}
+} */
 
 //DistrictBarChart
 export function useDistrictBarChart(){
   const barChartContainer = ref(null);
 
   async function initDistrictChart() {
+    // 使用本地服務器地址
+    const url = 'http://localhost:3000/user?table=Parking';
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        // 直接使用該數據數組進行後續處理
+        const items = data;
+
+        const parkingSpotsByDistrict = items.reduce((accumulator, item) => {
+            const district = item.district; 
+            const spots = parseInt(item.available_spots, 10);
+            accumulator[district] = (accumulator[district] || 0) + spots;
+            return accumulator;
+        }, {});
+
+        const categories = Object.keys(parkingSpotsByDistrict);
+        const seriesData = Object.values(parkingSpotsByDistrict);
+
+        if (barChartContainer.value) {
+            const { setOption } = useBar(barChartContainer.value);
+            setOption(categories, seriesData);
+        }
+    } catch (error) {
+        console.error("Fetching district data failed:", error);
+    }
+}
+  /* async function initDistrictChart() {
     const districtUrl = 'https://api.kcg.gov.tw/api/service/Get/897e552a-2887-4f6f-a6ee-709f7fbe0ee3';
     const data = await fetchData(districtUrl);
     if (data && data.data) {
@@ -163,7 +190,7 @@ export function useDistrictBarChart(){
         setOption(categories, seriesData);
       }
     }
-  }
+  } */
   onMounted(initDistrictChart);
   return{barChartContainer}
 }
@@ -173,6 +200,28 @@ export function useHotelBarChart(){
   const barChartTwo = ref(null);
 
   async function initHotelChart() {
+    const hotelUrl = 'http://localhost:3000/user?table=HotelInfo';
+    try {
+      const response = await fetch(hotelUrl);
+      const data = await response.json();
+
+
+      if (data && Array.isArray(data)) {
+        const hotelNames = data.map(item => item.hotel_name);
+        const roomCounts = data.map(item => parseInt(item.room_count, 10));
+
+        // 使用useBar初始化圖表
+        if (barChartTwo.value) {
+          const { setOption } = useHotelBar(barChartTwo.value);
+          // 確保傳遞給 setOption 的數據格式正確
+          setOption(roomCounts, hotelNames);
+        }
+      }
+    } catch (error) {
+      console.error("Fetching hotel data error:", error);
+    }
+  }
+  /* async function initHotelChart() {
     const hotelUrl ='https://api.kcg.gov.tw/api/service/Get/8ed53368-e292-4e2a-80a7-434cf497220c';
     const data = await fetchData(hotelUrl);
 
@@ -186,7 +235,7 @@ export function useHotelBarChart(){
       const { setOption } = useHotelBar(barChartTwo.value);
       setOption(roomCounts, hotelNames);
     }
-  }
+  } */
   onMounted(initHotelChart)
   return{barChartTwo }
 }
