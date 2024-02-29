@@ -1,7 +1,7 @@
 /* 處理來自客戶端的HTTP GET請求 
 根據客戶端請求的tableName,從資料庫中查詢並返回相應的數據  */
 
-const db = require('../db/index.js');
+const db = require('../db/index.js'); /* 引入db:連接SQL */
 
 function userGet(req, res){    /* req請求對象,res響應對象 */
     // 從請求的查詢參數中獲取表名
@@ -19,11 +19,11 @@ function userGet(req, res){    /* req請求對象,res響應對象 */
     }
 
     // 執行查詢
-    db.query(sql, (err,data)  =>{
+    db.query(sql, (err,data)  =>{  /* 引入db模塊來執行構造好的SQL查詢語句;err錯誤對象,data查詢結果*/
         if(err){
             return res.status(500).send('錯誤: ' + err.message);
         }
-        res.send(data)
+        res.send(data)   /* 用res參數發送數據 */
     })
 }
 module.exports = { userGet };

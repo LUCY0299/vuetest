@@ -152,6 +152,8 @@ export function useDistrictBarChart(){
         // 直接使用該數據數組進行後續處理
         const items = data;
 
+        console.log("Parking table data:", items);
+
         const parkingSpotsByDistrict = items.reduce((accumulator, item) => {
             const district = item.district; 
             const spots = parseInt(item.available_spots, 10);
@@ -205,6 +207,7 @@ export function useHotelBarChart(){
       const response = await fetch(hotelUrl);
       const data = await response.json();
 
+      console.log("HotelInfo table data:", data);
 
       if (data && Array.isArray(data)) {
         const hotelNames = data.map(item => item.hotel_name);

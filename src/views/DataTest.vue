@@ -40,6 +40,8 @@
         .then(data => {
           // 直接將獲取的數據賦值給 items
          this.items = data; 
+         
+         console.log("HotelInfo table data:", data);
         })
         .catch(error => console.error("There was an error fetching the data:", error));
       },
