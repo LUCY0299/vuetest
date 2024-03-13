@@ -1,10 +1,15 @@
 # vuetest
 
 ## Vue pratice
+###Page introduce
 1. Counter : ( + , - )method,when add to 10,go to About page
 2. About : currency converter,(tw,jp,us)
-3. Quizes : the main funcion,three types of questions,and each have three miltiple choice question
-
+3. Quizes : the main funcion,three types of questions,and each have three miltiple choice question (with result page)
+4. PieChart : doraemon character statistics
+5. BarChart : frech mysql data,and display in barchart type (two table with one vertical the other horizontal)
+-----------------------------------------------------------------------------------------------------
+###skill
+frontend display and backend MySQL setting,connect from server
 
 ## Source
 https://youtu.be/I_xLMmNeLDY?si=8zAyEiprkGgSgifV
