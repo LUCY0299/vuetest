@@ -34,6 +34,7 @@ function userGet(req, res){    /* req請求對象,res響應對象 */
         if(err){
             return res.status(500).send('錯誤: ' + err.message);
         }
+        console.log(data);
         res.send(data)   /* 用res參數發送數據 */
     })
 }
